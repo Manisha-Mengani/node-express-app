@@ -18,15 +18,16 @@ const port = process.env.PORT || config.get("port");
 
 // declare your callback function the old way
 app.get('/', function (req, res) {
-  res.send('Welcome to the default page!  <br> <br>' +
-    'Try going to different URIs by adding these at the end: <br> <br>' +
-    '/hello <br>' +
-    '/big <br>' +
-    '/json <br>' +
-    '/greeting/yourname <br>' +
-    '/yo/Dr.Rogers <br>' +
+  res.send('Welcome to the North west Missouri State University!  <br> <br>' +
+    'Lets Try going to different URIs which are the courses offered at ACS by adding these at the end: <br> <br>' +
+    '/ACS <br>' +
+    '/Web <br>' +
+    '/node js <br>' +
+    '/name <br>' +
+    '//college_id/Snumber <br>' +
+ 
     '/fortune <br>' +
-    '/fancy/?first=Denise&last=Case <br>' +
+    '/fullname/?first=Manisha&last=Mengani <br>' +
     '<br> <br>' +
     'Fork the source code from <a href="https://github.com/denisecase/node-express-app">https://github.com/denisecase/node-express-app</a>'
   )
@@ -34,51 +35,50 @@ app.get('/', function (req, res) {
 
 // or use the new arrow function syntax
 // respond with text
-app.get('/hello', (req, res) => {
-  res.send('Hello World!')
+app.get('/ACS', (req, res) => {
+  res.send('Applied Computer Science')
 })
 
 // or respond with html
-app.get('/big', (req, res) => {
-  res.send('<h1>Hello World!</h1>')
+app.get('/Web', (req, res) => {
+  res.send('<h1><em>Its fun learning web apps!</em></h1>')
 })
 
 // or respond with JSON
-app.get('/json', (req, res) => {
-  res.send('{"name" : "Nandini"}')
+app.get('/node js', (req, res) => {
+  res.send('{"name" : "Node.js"}')
 })
 
+app.get('/name', (req, res) => {
+  res.send('{"name" : "Manisha"}')
+})
 // :name indicates a parameter at this location in the URI
-app.get('/greeting/:id', (req, res) => {
+app.get('/college_id/:id', (req, res) => {
   res.send(`Hello! The id provided was ${req.params.id}.`)
 })
 
 // combine your skills and get creative
-app.get('/yo/:buddy', (req, res) => {
-  res.send(`<h1>Yo, ${req.params.buddy}!</h1>`)
-})
+
 
 // provide multiple query parameters (named first and last) with ? and &
-app.get('/fancy', (req, res) => {
+app.get('/fullname', (req, res) => {
   const first = req.query.first
   const last = req.query.last
   res.send(`Hello ${first} ${last}!`)
 })
 
-let fortunes = ['It is certain.', 'It is decidedly so.', 'Without a doubt.', 'Yes - definitely.',
-'You may rely on it', 'As I see it, yes.', 'Most likely', 'Outlook good.', 'Yes.', 'Signs point to yes.',
-'Reply hazy, try again.', 'Ask again later.', 'Better not tell you now.', 'Cannot predict now.', 
-'Concentrate and ask again.', 'Don\'t count on it.', 'My reply is no.', 'My sources say no.', 'Outlook not so good.',
-'Very doubtful.']
+let fortunes = ['blue.', 'green.', 'yellow.', 'voilet.',
+'cream.', 'red', 'purple', 'pink.', 'black.', 'orange.',
+'white.']
 
 // Implements a Magic 8 Ball service
-app.get('/fortune', (req,res) => {
+app.get('/favorite_colour', (req,res) => {
   if(isEmpty(req.query)){
-    res.send('<h2>You wish to know the future?</h2>' +
-             '<p>Ask a question in the query string, e.g., http://localhost:3002/fortune?Will I become rich? <br/>' +
-             '<p>The Magic 8 Ball will answer!</p>')
+    res.send('<h2>You wish to know your favourite color?</h2>' +
+             '<p>Ask a question in the query string, e.g., http://localhost:3002/favorite_colour?Whats my favourite color? <br/>' +
+             '<p>The Magic color Ball will answer!</p>')
   } else {
-    res.send(`The answer is ... wait for it ... ${fortunes[randomInt(0, fortunes.length)]}`)
+    res.send(`The favourite color  is ... wait for it ... ${fortunes[randomInt(0, fortunes.length)]}`)
   }
 })
 
