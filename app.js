@@ -17,6 +17,9 @@ const port = process.env.PORT || config.get("port");
 // Use Express app.get() methods to configure endpoints
 
 // declare your callback function the old way
+
+
+
 app.get('/', function (req, res) {
   res.send('Welcome to the North west Missouri State University!  <br> <br>' +
     'Lets Try going to different URIs which are the courses offered at ACS by adding these at the end: <br> <br>' +
@@ -24,10 +27,11 @@ app.get('/', function (req, res) {
     '/Web <br>' +
     '/node js <br>' +
     '/name <br>' +
-    '//college_id/Snumber <br>' +
- 
+    '/college_id/Snumber <br>' +
+   
     '/fortune <br>' +
     '/fullname/?first=Manisha&last=Mengani <br>' +
+    '/refer_websites'+
     '<br> <br>' +
     'Fork the source code from <a href="https://github.com/denisecase/node-express-app">https://github.com/denisecase/node-express-app</a>'
   )
@@ -67,6 +71,18 @@ app.get('/fullname', (req, res) => {
   res.send(`Hello ${first} ${last}!`)
 })
 
+app.get('/refer_websites', function (req, res) {
+  res.send('Welcome to the North west Missouri State University! <br> <br>' +
+    'Below are some useful links for BearCats  <br> <br>' +
+    '<ul>'+
+    '<li>'+
+    '<a href="https://www.nwmissouri.edu/login/">Northwest online</a>'+
+    '</li>'+
+    
+    '</ul>'+
+    '<hr>'
+  )
+})
 let fortunes = ['blue.', 'green.', 'yellow.', 'voilet.',
 'cream.', 'red', 'purple', 'pink.', 'black.', 'orange.',
 'white.']
